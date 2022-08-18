@@ -55,3 +55,6 @@ a {
     top: -34px; 
 
 }
+#description {
+    text-transform: capitalize;
+}
