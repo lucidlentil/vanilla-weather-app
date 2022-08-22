@@ -1,9 +1,3 @@
-let apiKey = "74ca054ff55e08af1a7a77572c080cfe"; 
-let city = "auckland";
-let apiUrl =`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`; 
-
-
-
 function formatDate(timestamp) {
     //calculate date using milliseconds since 1970??
     let date = new Date(timestamp); 
@@ -40,4 +34,20 @@ function displayTemperature(response) {
     iconElement.setAttribute("alt", response.data.weather[0].description); 
 }
 
-axios.get(apiUrl).then(displayTemperature);
+function search(city) {
+    let apiKey = "74ca054ff55e08af1a7a77572c080cfe"; 
+    let apiUrl =`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`; 
+    axios.get(apiUrl).then(displayTemperature);
+}
+
+
+function handleSubmit(event) {
+    event.preventDefault(); 
+    let cityInputElement = document.querySelector("#city-input"); 
+    search(cityInputElement.value); 
+}
+
+search("Christchurch"); 
+
+let form = document.querySelector("#search-form"); 
+form.addEventListener("submit", handleSubmit); 
