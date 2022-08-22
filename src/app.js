@@ -47,7 +47,17 @@ function handleSubmit(event) {
     search(cityInputElement.value); 
 }
 
+function displayFahrenheit(event) {
+    event.preventDefault(); 
+    let temperatureElement = document.querySelector("#temperature"); 
+    let fahrenheitTemperature = (temperatureElement.innerHTML * 9) / 5 + 32; 
+    temperatureElement.innerHTML = Math.round(fahrenheitTemperature); 
+}
+
 search("Christchurch"); 
 
 let form = document.querySelector("#search-form"); 
 form.addEventListener("submit", handleSubmit); 
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link"); 
+fahrenheitLink.addEventListener("click", displayFahrenheit)
